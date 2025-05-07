@@ -1,5 +1,7 @@
 package main.initial.service;
 
+import main.models.Persona;
+
 public class Initial {
 
     public static void main(String[] args) {
@@ -42,5 +44,26 @@ public class Initial {
         // TODO: ↓ Acá podés comenzar a resolver desde el main:
 
         // ¡A codear!
-    }
-}
+
+                // Crear objetos Persona
+                Persona persona1 = new Persona("Claudia", 55, "22869333");
+                Persona persona2 = new Persona("Gaston", 15, "47867234");
+
+                // Mostrar información de ambas personas
+                System.out.println("== Persona 1 ==");
+                persona1.mostrarInformacion();
+                System.out.println("¿Es mayor de edad? " + persona1.esMayorDeEdad());
+
+                System.out.println("\n== Persona 2 ==");
+                persona2.mostrarInformacion();
+                System.out.println("¿Es mayor de edad? " + persona2.esMayorDeEdad());
+
+                // Cambiar edad de persona2
+                persona2.setEdad(19);
+                System.out.println("\n== Persona 2 (Edad actualizada) ==");
+                persona2.mostrarInformacion();
+                System.out.println("¿Es mayor de edad? " + persona2.esMayorDeEdad());
+            }
+        }
+
+
