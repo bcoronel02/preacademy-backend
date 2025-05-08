@@ -1,5 +1,9 @@
 package main.bank.service;
 
+import main.models.CajaAhorro;
+import main.models.CuentaCorriente;
+import main.models.Cuenta;
+
 public class BankExercice {
     public static void main(String[] args) {
 
@@ -48,6 +52,38 @@ public class BankExercice {
         // TODO: ↓ Acá podés comenzar a resolver desde el main:
 
         // ¡A programar!
+
+        // Crear cuentas
+        CajaAhorro ahorro = new CajaAhorro(5000, "CA123");
+        CuentaCorriente corriente = new CuentaCorriente(1000, "CC456");
+
+        // Depositar dinero
+        ahorro.depositar(1000);
+        corriente.depositar(500);
+
+        // Mostrar saldos
+        System.out.println("\n== Saldo Caja de Ahorro ==");
+        ahorro.mostrarSaldo();
+
+        System.out.println("\n== Saldo Cuenta Corriente ==");
+        corriente.mostrarSaldo();
+
+        // Retirar dinero
+        ahorro.retirar(2000);
+        corriente.retirar(1500); // Permitido porque admite sobregiro
+
+        // Mostrar saldos después del retiro
+        System.out.println("\n== Saldos luego del retiro ==");
+        ahorro.mostrarSaldo();
+        corriente.mostrarSaldo();
+
+        // Transferencia
+        Cuenta.transferir(ahorro, corriente, 1000);
+
+        // Mostrar saldos después de la transferencia
+        System.out.println("\n== Saldos luego de transferencia ==");
+        ahorro.mostrarSaldo();
+        corriente.mostrarSaldo();
     }
 }
 
