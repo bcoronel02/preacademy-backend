@@ -1,4 +1,4 @@
-package main.models;
+package main.bank.service.model;
 
 public abstract class Cuenta {
     private double saldo;
@@ -27,7 +27,6 @@ public abstract class Cuenta {
             System.out.println("Saldo insuficiente para retirar $" + monto);
         }
     }
-
     public void mostrarSaldo() {
         System.out.println("Saldo actual: $" + saldo);
     }

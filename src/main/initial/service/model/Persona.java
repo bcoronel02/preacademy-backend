@@ -1,4 +1,4 @@
-package main.models;
+package main.initial.service.model;
 
 public class Persona {
     // Atributos privados
