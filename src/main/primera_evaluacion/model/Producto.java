@@ -43,6 +43,52 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    
+    // Metodo toString
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", categoria='" + categoria + '\'' +
+                '}';
+    }
+
+    // Patrón Builder
+    public static class Builder {
+        private Producto producto;
+
+        public Builder() {
+            producto = new Producto();
+        }
+
+        public Builder id(int id) {
+            producto.id = id;
+            return this;
+        }
+
+        public Builder nombre(String nombre) {
+            producto.nombre = nombre;
+            return this;
+        }
+
+        public Builder precio(double precio) {
+            producto.precio = precio;
+            return this;
+        }
+
+        public Builder categoria(String categoria) {
+            producto.categoria = categoria;
+            return this;
+        }
+
+        public Producto build() {
+            return producto;
+        }
+    }
+
+
+
+
 
 }
