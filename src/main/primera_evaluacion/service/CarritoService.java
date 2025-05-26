@@ -39,5 +39,11 @@ public class CarritoService {
         carrito.agregarProducto(producto2, 1);
         carrito.agregarProducto(producto3, 3);
 
+        // Crea y aplica cupon de descuento
+        Cupon cupon = new Cupon();
+        cupon.setCodigo("HOT-SALE20");
+        cupon.setPorcentajeDescuento(20);
+        carrito.aplicarCupon(cupon);
+
     }
 }
