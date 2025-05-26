@@ -26,6 +26,13 @@ public class CarritoService {
                 .categoria("Accesorios")
                 .build();
 
+        // Crear cliente
+        Cliente cliente = new Cliente();
+        cliente.setNombreCompleto("Brenda Coronel");
+
+        // Crear carrito y lo asigna al cliente
+        Carrito carrito = new Carrito();
+        carrito.setCliente(cliente);
 
     }
 }
