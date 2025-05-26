@@ -85,6 +85,25 @@ public class Carrito {
         this.cupon = cupon;
     }
 
+    public List<ItemCarrito> obtenerItemsPorCategoria(String categoria) {
+        return items.stream()
+                .filter(item -> item.getProducto().getCategoria().equalsIgnoreCase(categoria))
+                .collect(Collectors.toList());
+    }
+
+    public int obtenerCantidadTotalProductos() {
+        return items.stream()
+                .mapToInt(ItemCarrito::getCantidad)
+                .sum();
+    }
+
+    public double obtenerPromedioPrecioProductos() {
+        return items.stream()
+                .mapToDouble(item -> item.getProducto().getPrecio())
+                .average()
+                .orElse(0.0);
+    }
+
     public void mostrarResumen() {
         System.out.println("--- Resumen del Carrito ---");
         System.out.println("Cliente: " + (cliente != null ? cliente.getNombreCompleto() : "No especificado"));
