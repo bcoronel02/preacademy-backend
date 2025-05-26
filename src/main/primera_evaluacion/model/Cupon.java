@@ -19,7 +19,7 @@ public class Cupon {
         this.codigo = codigo;
 
     }
- 
+
     public double getPorcentajeDescuento() {
         return porcentajeDescuento;
     }
