@@ -3,6 +3,7 @@ package main.primera_evaluacion.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Carrito {
     private List<ItemCarrito> items;
     private Cupon cupon;
@@ -68,6 +69,56 @@ public class Carrito {
         }
     }
 
+    public double calcularSubtotal() {
+        return items.stream()
+                .mapToDouble(ItemCarrito::calcularSubtotal)
+                .sum();
+    }
 
+    public double calcularTotalConDescuento() {
+        double subtotal = calcularSubtotal();
+        double descuento = calcularDescuentoFinal();
+        return subtotal * (1 - descuento / 100);
+    }
 
+    public void aplicarCupon(Cupon cupon) {
+        this.cupon = cupon;
+    }
+
+    public void mostrarResumen() {
+        System.out.println("--- Resumen del Carrito ---");
+        System.out.println("Cliente: " + (cliente != null ? cliente.getNombreCompleto() : "No especificado"));
+
+        System.out.println("\nProductos en el carrito:");
+        items.forEach(item -> System.out.printf(
+                "- %s (x%d): $%.2f c/u -> Subtotal: $%.2f%n",
+                item.getProducto().getNombre(),
+                item.getCantidad(),
+                item.getProducto().getPrecio(),
+                item.calcularSubtotal()
+        ));
+
+        double subtotal = calcularSubtotal();
+        double descuento = calcularDescuentoFinal();
+        double total = calcularTotalConDescuento();
+
+        System.out.printf("%nSubtotal: $%.2f%n", subtotal);
+        System.out.printf("Descuento aplicado: %.2f%%%n", descuento);
+        System.out.printf("Total con descuento: $%.2f%n", total);
+        System.out.println("===========================");
+    }
+
+    private double calcularDescuentoFinal() {
+        if (cupon != null) {
+            return cupon.getPorcentajeDescuento();
+        }
+
+        double subtotal = calcularSubtotal();
+        if (subtotal > 10000) {
+            return 10;
+        } else if (subtotal > 5000) {
+            return 5;
+        }
+        return 0;
+    }
 }
