@@ -45,5 +45,19 @@ public class CarritoService {
         cupon.setPorcentajeDescuento(20);
         carrito.aplicarCupon(cupon);
 
+        // Mostrar calculos
+        System.out.printf("Subtotal: $%.2f%n", carrito.calcularSubtotal());
+        System.out.printf("Total con descuento: $%.2f%n", carrito.calcularTotalConDescuento());
+
+        System.out.println("\nProductos en la categoría 'Electronicos':");
+        carrito.obtenerItemsPorCategoria("Electrónicos")
+                .forEach(item -> System.out.println("- " + item.getProducto().getNombre()));
+
+        System.out.printf("%nCantidad total de productos: %d%n", carrito.obtenerCantidadTotalProductos());
+        System.out.printf("Promedio de precios: $%.2f%n", carrito.obtenerPromedioPrecioProductos());
+
+        // Mostrar resumen final de la compra
+        carrito.mostrarResumen();
+
     }
 }
