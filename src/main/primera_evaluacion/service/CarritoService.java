@@ -34,5 +34,10 @@ public class CarritoService {
         Carrito carrito = new Carrito();
         carrito.setCliente(cliente);
 
+        // Agregar productos al carrito
+        carrito.agregarProducto(producto1, 2);
+        carrito.agregarProducto(producto2, 1);
+        carrito.agregarProducto(producto3, 3);
+
     }
 }
